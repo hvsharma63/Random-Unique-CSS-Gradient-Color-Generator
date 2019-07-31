@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Random-Unique-CSS-Gradient-Color-Generator</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the game!</h1>
+        <input type="text" name="number" id="" onkeyup="generate(this)"
+            placeholder="Enter your favourite number and then press TAB">
+        <div id="result">
+            <script>
+                let generate = (ele) => {
+                    if (!isNaN(ele.value)) {
+                        document.getElementById("result").innerHTML = "";
+                        // alert(ele.value);
+                        let letters = "0123456789ABCDEF";
+                        array_1 = [];
+                        array_2 = [];
+                        for (i = 0; i < ele.value; i++) {
+                            let color_1 = '#';
+                            let color_2 = '#';
+                            do {
+                                for (let i = 0; i < 6; i++) {
+                                    color_1 += letters[(Math.floor(Math.random() * 16))];
+                                    color_2 += letters[(Math.floor(Math.random() * 16))];
+                                }
+                                array_1.push(color_1);
+                                array_2.push(color_2);
+                            } while (!array_1.includes(color_1) && array_2.includes(color_2));
+                            let div = document.createElement("div");
+                            div.style.width = "200px";
+                            div.style.height = "200px";
+                            div.style.backgroundImage = "linear-gradient(to right," + color_1 + "," + color_2 + ")";
+                            div.style.color = "white";
+                            div.style.display = "inline-flex";
+                            div.style.margin = "25px";
+                            document.getElementById("result").appendChild(div);
+                        }
+                        array_1 = [];
+                        array_2 = [];
+                    } else {
+                        alert("Only Number is allowed");
+                        document.getElementById("result").innerHTML = "";
+                    }
+                }
+            </script>
+    </body>
+
+</html>
